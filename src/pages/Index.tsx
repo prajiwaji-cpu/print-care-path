@@ -7,12 +7,17 @@ import { NewRequestForm } from "@/components/NewRequestForm";
 import { RequestDetails } from "@/components/RequestDetails";
 import { StatusBadge } from "@/components/StatusBadge";
 // ELEPHANTPANTS: Replace with API call to fetch warranty requests
+// import { mockWarrantyRequests } from "@/data/mockData";
+import { warrantyApi } from "@/services/warrantyApi";
 import { mockWarrantyRequests } from "@/data/mockData";
 import { WarrantyRequest } from "@/types/warranty";
 import { Plus, Search, FileText, Clock, CheckCircle, XCircle } from "lucide-react";
 
 const Index = () => {
   // ELEPHANTPANTS: Replace mockWarrantyRequests with API call
+  // const [requests, setRequests] = useState<WarrantyRequest[]>(mockWarrantyRequests);
+  // Use: const [requests, setRequests] = useState<WarrantyRequest[]>([]);
+  // Then: useEffect(() => { warrantyApi.getRequests().then(setRequests); }, []);
   const [requests, setRequests] = useState<WarrantyRequest[]>(mockWarrantyRequests);
   const [searchTerm, setSearchTerm] = useState("");
   const [showNewForm, setShowNewForm] = useState(false);
@@ -30,6 +35,9 @@ const Index = () => {
 
   const handleNewRequest = (formData: any) => {
     // ELEPHANTPANTS: Replace with API call to submit new warranty request
+    // Use: warrantyApi.createRequest(formData).then(newRequest => { 
+    //   setRequests(prev => [newRequest, ...prev]); setShowNewForm(false); 
+    // });
     const newRequest: WarrantyRequest = {
       id: `WR-2024-${String(requests.length + 1).padStart(3, '0')}`,
       ...formData,
