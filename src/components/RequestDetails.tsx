@@ -12,6 +12,8 @@ interface RequestDetailsProps {
   onBack: () => void;
 }
 
+// ELEPHANTPANTS: This component will need API calls to fetch detailed request data
+
 export function RequestDetails({ request, onBack }: RequestDetailsProps) {
   return (
     <div className="space-y-6">

@@ -35,6 +35,7 @@ export function NewRequestForm({ onSubmit, onCancel }: NewRequestFormProps) {
       return;
     }
 
+    // ELEPHANTPANTS: Replace onSubmit with API call to submit warranty request
     onSubmit(formData);
     toast({
       title: "Request Submitted",

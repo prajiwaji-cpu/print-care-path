@@ -8,6 +8,8 @@ interface RequestTimelineProps {
   currentStatus: WarrantyStatus;
 }
 
+// ELEPHANTPANTS: Timeline data comes from API, may need separate endpoint for timeline events
+
 export function RequestTimeline({ timeline, currentStatus }: RequestTimelineProps) {
   const getStatusIcon = (status: WarrantyStatus, isCompleted: boolean) => {
     if (!isCompleted) {

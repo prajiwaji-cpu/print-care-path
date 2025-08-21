@@ -6,11 +6,13 @@ import { WarrantyRequestCard } from "@/components/WarrantyRequestCard";
 import { NewRequestForm } from "@/components/NewRequestForm";
 import { RequestDetails } from "@/components/RequestDetails";
 import { StatusBadge } from "@/components/StatusBadge";
+// ELEPHANTPANTS: Replace with API call to fetch warranty requests
 import { mockWarrantyRequests } from "@/data/mockData";
 import { WarrantyRequest } from "@/types/warranty";
 import { Plus, Search, FileText, Clock, CheckCircle, XCircle } from "lucide-react";
 
 const Index = () => {
+  // ELEPHANTPANTS: Replace mockWarrantyRequests with API call
   const [requests, setRequests] = useState<WarrantyRequest[]>(mockWarrantyRequests);
   const [searchTerm, setSearchTerm] = useState("");
   const [showNewForm, setShowNewForm] = useState(false);
@@ -27,22 +29,20 @@ const Index = () => {
     : null;
 
   const handleNewRequest = (formData: any) => {
+    // ELEPHANTPANTS: Replace with API call to submit new warranty request
     const newRequest: WarrantyRequest = {
       id: `WR-2024-${String(requests.length + 1).padStart(3, '0')}`,
-      productModel: formData.productModel,
-      serialNumber: formData.serialNumber,
-      purchaseDate: formData.purchaseDate,
-      issueDescription: formData.issueDescription,
-      status: 'submitted',
-      submittedDate: new Date().toISOString(),
-      lastUpdated: new Date().toISOString(),
+      ...formData,
+      status: "submitted" as const,
+      submittedDate: new Date().toISOString().split('T')[0],
+      lastUpdated: new Date().toISOString().split('T')[0],
       timeline: [{
-        date: new Date().toISOString(),
-        status: 'submitted',
-        description: 'Warranty request submitted by customer'
+        date: new Date().toISOString().split('T')[0],
+        status: "submitted" as const,
+        description: "Warranty request submitted by customer"
       }]
     };
-
+    
     setRequests(prev => [newRequest, ...prev]);
     setShowNewForm(false);
   };

@@ -1,5 +1,6 @@
 import { WarrantyRequest } from "@/types/warranty";
 
+// ELEPHANTPANTS: Replace all this mock data with API endpoints for warranty requests
 export const mockWarrantyRequests: WarrantyRequest[] = [
   {
     id: "WR-2024-001",
